@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- **`/arckit:fr-secnumcloud` cited only the non-binding "Cloud au Centre" doctrine as SecNumCloud's legal basis.** The command and its guide framed the requirement around the 2021 doctrine and OIV/OSE designation only, missing the arrêté du 12 août 2026 (in force since 22 August 2026, under décret n° 2026-272 / loi SREN) that makes SecNumCloud 3.2 qualification legally binding for state administrations, their operators, and six designated GIP handling legally-sensitive data — independently of OIV/OSE status, and reaching private suppliers via public contracts or sub-contracting chains. Scoping (Step 4), the regulatory-framework table, the OIV/OSE mapping step, Important Notes, and Key References now reflect the binding basis; the nested `arckit-claude/plugins/fr` mirror and `docs/guides` copy re-synced.
+
 - **`slugify` produces the right slug on stock macOS bash 3.2.** The accent transliteration in `scripts/bash/common.sh` (and the plugin copy) used a quoted multibyte pattern in `${var//pattern/repl}`, which bash 3.2 mis-splits, so a project named "Café Modernisation" got the directory `caf-e-modernisation` on any Mac without a Homebrew bash; bash 5 handled it, which is why CI on Ubuntu never saw it and the 27 `test_slugify.py` failures looked like a local-only quirk. Both sides of the substitution are now unquoted (the table holds letters only, so nothing needs quoting), with a comment naming the quirk. All 102 slugify cases pass on bash 3.2 and bash 5.
 
 ### Changed
